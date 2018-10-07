@@ -16,17 +16,6 @@ import org.webrtc.VideoRenderer
 import org.webrtc.EglBase
 import org.webrtc.SurfaceViewRenderer
 
-
-
-
-
-
-
-
-
-
-
-
 class CallActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
