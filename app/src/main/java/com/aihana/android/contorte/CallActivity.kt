@@ -23,6 +23,8 @@ import org.webrtc.MediaConstraints
 import org.webrtc.PeerConnectionFactory
 import org.webrtc.EglBase
 import org.webrtc.SurfaceViewRenderer
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class CallActivity : AppCompatActivity(), View.OnClickListener, SignallingClientKotlin.SignalingInterface {
@@ -86,7 +88,7 @@ class CallActivity : AppCompatActivity(), View.OnClickListener, SignallingClient
 
     private fun getIceServers() {
         //get Ice servers using xirsys
-        Utils.getInstance().retrofitInstance.iceCandidates.enqueue(object : Callback<TurnServerPojo> {
+        Utils.getInstance().getRetrofitInstance().iceCandidates.enqueue(object : Callback<TurnServerPojo> {
             override fun onResponse(call: Call<TurnServerPojo>, response: Response<TurnServerPojo>) {
                 var iceServers: List<IceServer> = ArrayList()
                 val body = response.body()
