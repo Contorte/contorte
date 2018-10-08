@@ -1,7 +1,6 @@
 package com.aihana.android.contorte
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import org.webrtc.PeerConnection.IceServer
 
 class TurnServerPojo {
 

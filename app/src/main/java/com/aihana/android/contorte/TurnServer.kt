@@ -1,5 +1,5 @@
 package com.aihana.android.contorte
-import com.aihana.android.contorte.TurnServerPojo
+
 import retrofit2.Call
 import retrofit2.http.GET
 

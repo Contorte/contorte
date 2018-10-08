@@ -2,7 +2,6 @@ package com.aihana.android.contorte
 
 
 import android.util.Log
-
 import org.webrtc.SdpObserver
 import org.webrtc.SessionDescription
 

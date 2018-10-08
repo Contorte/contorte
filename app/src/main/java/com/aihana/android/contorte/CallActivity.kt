@@ -2,30 +2,35 @@ package com.aihana.android.contorte
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.telecom.Call
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.view.ViewGroup.*
 import android.view.ViewGroup.LayoutParams.*
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.Toast
 import org.json.JSONException
 import org.json.JSONObject
-import org.webrtc.*
 import org.webrtc.Camera1Enumerator
 import org.webrtc.VideoCapturer
 import org.webrtc.CameraEnumerator
 import org.webrtc.VideoTrack
 import org.webrtc.MediaConstraints
 import org.webrtc.PeerConnectionFactory
+import org.webrtc.PeerConnection
 import org.webrtc.EglBase
 import org.webrtc.SurfaceViewRenderer
 import retrofit2.Callback
 import retrofit2.Response
-
+import retrofit2.Call
+import org.webrtc.AudioTrack
+import org.webrtc.DefaultVideoDecoderFactory
+import org.webrtc.DefaultVideoEncoderFactory
+import org.webrtc.IceCandidate
+import org.webrtc.MediaStream
+import org.webrtc.SessionDescription
+import org.webrtc.VideoRenderer
+import org.webrtc.VideoSource
 
 class CallActivity : AppCompatActivity(), View.OnClickListener, SignallingClientKotlin.SignalingInterface {
 
@@ -90,12 +95,12 @@ class CallActivity : AppCompatActivity(), View.OnClickListener, SignallingClient
         //get Ice servers using xirsys
         Utils.getInstance().getRetrofitInstance().iceCandidates.enqueue(object : Callback<TurnServerPojo> {
             override fun onResponse(call: Call<TurnServerPojo>, response: Response<TurnServerPojo>) {
-                var iceServers: List<IceServer> = ArrayList()
+                var iceServers: List<IceServer>? = ArrayList()
                 val body = response.body()
                 if (body != null) {
-                    iceServers = body.iceServerList.iceServers
+                    iceServers = body.iceServerList?.iceServers
                 }
-                for (iceServer in iceServers) {
+                for (iceServer in iceServers!!) {
                     if (iceServer.credential == null) {
                         val peerIceServer = PeerConnection.IceServer.builder(iceServer.url).createIceServer()
                         peerIceServers.add(peerIceServer)
@@ -186,7 +191,9 @@ class CallActivity : AppCompatActivity(), View.OnClickListener, SignallingClient
         rtcConfig.continualGatheringPolicy = PeerConnection.ContinualGatheringPolicy.GATHER_CONTINUALLY
         // Use ECDSA encryption.
         rtcConfig.keyType = PeerConnection.KeyType.ECDSA
-        localPeer = peerConnectionFactory.createPeerConnection(rtcConfig, object : CustomPeerConnectionObserver("localPeerCreation") {
+
+
+        localPeer = peerConnectionFactory.createPeerConnection(rtcConfig, sdpConstraints, object : CustomPeerConnectionObserver("localPeerCreation") {
             override fun onIceCandidate(iceCandidate: IceCandidate) {
                 super.onIceCandidate(iceCandidate)
                 onIceCandidateReceived(iceCandidate)
