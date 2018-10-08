@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Utils {
 
-    private var retrofitInstance: Retrofit? = null
+    var retrofitInstance: Retrofit? = null
 
     internal fun getRetrofitInstance(): TurnServer {
         if (retrofitInstance == null) {
