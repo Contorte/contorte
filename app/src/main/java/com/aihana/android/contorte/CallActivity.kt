@@ -88,7 +88,7 @@ class CallActivity : AppCompatActivity(), View.OnClickListener, SignallingClient
 
     private fun getIceServers() {
         //get Ice servers using xirsys
-        Utils.getInstance().retrofitInstance.iceCandidates.enqueue(object : Callback<TurnServerPojo> {
+        Utils.getInstance().getRetrofitInstance().iceCandidates.enqueue(object : Callback<TurnServerPojo> {
             override fun onResponse(call: Call<TurnServerPojo>, response: Response<TurnServerPojo>) {
                 var iceServers: List<IceServer> = ArrayList()
                 val body = response.body()
