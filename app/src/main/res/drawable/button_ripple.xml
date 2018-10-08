@@ -1,0 +1,5 @@
+<ripple
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/button_highlight_color">
+    <item android:drawable="@drawable/flame_style"/>
+</ripple>
