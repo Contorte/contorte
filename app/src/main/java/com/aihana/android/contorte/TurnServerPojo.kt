@@ -18,7 +18,7 @@ class TurnServerPojo {
     @Expose
     var iceServerList: IceServerList? = null
 
-    internal inner class IceServerList {
+    inner class IceServerList {
 
         @SerializedName("iceServers")
         @Expose

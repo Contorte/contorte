@@ -30,7 +30,7 @@ class Utils {
             if (instance == null) {
                 instance = Utils()
             }
-            return instance
+            return instance as Utils
         }
     }
 }

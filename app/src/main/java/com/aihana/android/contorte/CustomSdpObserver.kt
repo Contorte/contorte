@@ -11,7 +11,7 @@ import org.webrtc.SessionDescription
  * Created by vivek-3102 on 11/03/17.
  */
 
-internal class CustomSdpObserver(logTag: String) : SdpObserver {
+internal open class CustomSdpObserver(logTag: String) : SdpObserver {
 
 
     private var tag: String? = null

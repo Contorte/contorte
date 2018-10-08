@@ -2,7 +2,18 @@ package com.aihana.android.contorte
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.telecom.Call
+import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.view.ViewGroup.*
+import android.view.ViewGroup.LayoutParams.*
+import android.widget.Button
+import android.widget.FrameLayout
+import android.widget.Toast
+import org.json.JSONException
+import org.json.JSONObject
 import org.webrtc.*
 import org.webrtc.Camera1Enumerator
 import org.webrtc.VideoCapturer
@@ -335,7 +346,7 @@ class CallActivity : AppCompatActivity(), View.OnClickListener, SignallingClient
                     it.height = dpToPx(100)
                     it.width = dpToPx(100)
                 } else {
-                    params = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                    params = FrameLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
                 }
                 localVideoView?.layoutParams = params
             }
