@@ -2,7 +2,6 @@ package com.aihana.android.contorte
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.telecom.Call
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
@@ -12,7 +11,6 @@ import android.view.ViewGroup.LayoutParams.*
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.Toast
-import okhttp3.Response
 import org.json.JSONException
 import org.json.JSONObject
 import org.webrtc.*
@@ -24,6 +22,9 @@ import org.webrtc.MediaConstraints
 import org.webrtc.PeerConnectionFactory
 import org.webrtc.EglBase
 import org.webrtc.SurfaceViewRenderer
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class CallActivity : AppCompatActivity(), View.OnClickListener, SignallingClientKotlin.SignalingInterface {
