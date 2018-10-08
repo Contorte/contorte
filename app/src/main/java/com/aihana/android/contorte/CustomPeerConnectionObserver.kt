@@ -14,7 +14,7 @@ import org.webrtc.RtpReceiver
  * Created by vivek-3102 on 11/03/17.
  */
 
-internal class CustomPeerConnectionObserver(logTag: String) : PeerConnection.Observer {
+open internal class CustomPeerConnectionObserver(logTag: String) : PeerConnection.Observer {
 
     private var logTag: String? = null
 
