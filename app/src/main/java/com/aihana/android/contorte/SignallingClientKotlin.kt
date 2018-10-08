@@ -1,5 +1,22 @@
 package com.aihana.android.contorte
 
+import android.annotation.SuppressLint
+import android.util.Log
+import io.socket.client.IO
+import io.socket.client.Socket
+import org.json.JSONException
+import org.json.JSONObject
+import org.webrtc.IceCandidate
+import org.webrtc.SessionDescription
+import java.net.URISyntaxException
+import java.security.KeyManagementException
+import java.security.NoSuchAlgorithmException
+import java.security.cert.X509Certificate
+import java.util.*
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
+
 internal class SignallingClientKotlin {
 
 
